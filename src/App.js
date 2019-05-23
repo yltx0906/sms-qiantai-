@@ -14,7 +14,10 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+       {/* <CollectionsPage/> */}
+       {/* <Clock> */}
         <div className="nav">
+          <div className="title">学生选课系统</div>
           <ul>
             <li><Link to="/student">学生管理</Link></li>
             <li><Link to="/course">课程管理</Link></li>
@@ -30,6 +33,7 @@ function App() {
             <Route path="/sc" component={StudentCourse}/>
           </Switch>
         </div>
+        
       </BrowserRouter>
     </div>
   );
