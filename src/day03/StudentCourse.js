@@ -23,9 +23,14 @@ class StudentCourse extends React.Component {
      this.loadCourses();
      //2.加载下拉框中学生信息
      this.loadStudents();
-     //加载选课信息
+     //3.加载选课信息
      this.loadStudentCourses();
+     //4.加载选课中学生信息
+     this.loadSCandStudent();
+     //5.加载选课中课程信息
+     this.loadSCandCourse();
   }
+  
     
   //加载下拉框中课程信息
   loadCourses(){
@@ -64,6 +69,24 @@ class StudentCourse extends React.Component {
     })
   }
 
+  //加载选课中学生信息
+loadSCandStudent(){
+  $.get("http://localhost:8888/sc/findAllWithStudent",({status,message,data})=>{
+    if(status === 200){
+      // 将查询数据设置到state中
+      this.setState({ "studentcourses":data })
+    } else {alert (message)}
+  })
+}
+  //加载选课中课程信息
+loadSCandCourse(){
+  $.get("http://localhost:8888/sc/findAllWithCourse",({status,message,data})=>{
+    if(status === 200){
+      // 将查询数据设置到state中
+      this.setState({ "studentcourses":data })
+    } else {alert (message)}
+  })
+}
   //添加或更新
   submitHandler = (event)=>{
     let url = "http://localhost:8888/sc/saveOrUpdate"
@@ -177,13 +200,13 @@ class StudentCourse extends React.Component {
       },
       {
         title: '选课学生',
-        dataIndex: 'studentId',
-        key:'studentId' 
+        dataIndex: 'student.realname',
+        // key:'studentId' 
       },
       {
         title: '选择课程',
-        dataIndex: 'courseId',
-        key:'courseId'
+        dataIndex: 'course.name',
+        // key:'courseId'
       },
       {
         title: '操作',

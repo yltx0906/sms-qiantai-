@@ -13,7 +13,7 @@ class Course extends React.Component {
       form:{
         name:"",
         credit:"",
-        description:"",
+        description:"",  
         teacherId:""
       }
     }
@@ -24,6 +24,8 @@ class Course extends React.Component {
     this.loadTeachers();
     // 2. 加载课程信息
     this.loadCourses();
+    //3.加载课程中老师的信息
+    this.loadCourseandTeacher();
   }
 
   //加载下拉框中教师信息
@@ -48,7 +50,15 @@ class Course extends React.Component {
       } else {alert (message)}
     })
   }
-
+//加载课程中老师信息
+loadCourseandTeacher(){
+  $.get("http://localhost:8888/course/findAllWithTeacher",({status,message,data})=>{
+    if(status === 200){
+      // 将查询数据设置到state中
+      this.setState({ "courses":data })
+    } else {alert (message)}
+  })
+}
    //添加或更新
    submitHandler = (event)=>{
     let url = "http://localhost:8888/course/saveOrUpdate"
@@ -157,8 +167,8 @@ class Course extends React.Component {
       },
       {
         title: '任课老师',
-        dataIndex: 'teacherId',
-        key:'teacherId'
+        dataIndex: 'teacher.realname',
+        // key:'realname'
       },
       {
         title: '操作',

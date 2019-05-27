@@ -159,7 +159,7 @@ delTeacher(id){
         {/* 通过table绑定数据 */}
         <Table  bordered={Collapse} rowKey = { record => record.id }
         dataSource= {this.state.teachers} 
-        columns= {columns} />;
+        columns= {columns} />
         
         {/* 日历 */}
         <Calendar />

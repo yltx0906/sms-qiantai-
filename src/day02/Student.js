@@ -105,6 +105,7 @@ class Student  extends React.Component {
   toAdd=()=>{
     this.setState({
       flag:true,
+      // students:{},
       form:{
         username:'',
         realname:'',
@@ -182,9 +183,7 @@ class Student  extends React.Component {
           <Input type="text" name="username" value={form.username} onChange={this.changeHandler} 
           placeholder="请输入用户名" />
           )}</Form.Item>
-          {/* 用户名 : 
-          <Input type="text" name="username" value={form.username} onChange={this.changeHandler} 
-            placeholder="请输入用户名" /> */}
+         
           <Form.Item label="姓名">
           {getFieldDecorator('realname', {
             rules: [{ required: true, message: '姓名不能为空!' }],
@@ -192,16 +191,21 @@ class Student  extends React.Component {
           <Input type="text" name="realname" value={form.realname} onChange={this.changeHandler}
            placeholder="请输入姓名" />
            )}</Form.Item>
-          {/* 姓名 :
-          <Input type="text" name="realname" value={form.realname} onChange={this.changeHandler}
-           placeholder="请输入姓名" /> <br/> */}
-            <Form.Item label="性别">
-          {getFieldDecorator('gender', {
+          <label>性别 ：
+                  <select name="gender"  value={form.gender} onChange={this.changeHandler}>
+                       <option value=""></option>
+                       <option value="男">男</option>
+                       <option value="女">女</option>
+                       
+                  </select>
+          </label>
+
+          {/* {getFieldDecorator('gender', {
             rules: [{ required: true, message: '性别不能为空!' }],
-          })(
-            <Input type="text" name="gender" value={form.gender} onChange={this.changeHandler}
-           placeholder="请输入性别" />
-           )}</Form.Item>
+          })( */}
+          {/* <Input type="text" name="gender" value={form.gender} onChange={this.changeHandler}
+            placeholder="请输入性别" />
+            )}</Form.Item> */}
           {/* 性别 :  
           <Input type="text" name="gender" value={form.gender} onChange={this.changeHandler}
            placeholder="请输入性别" /><br/>        */}

@@ -13,6 +13,7 @@ import {BrowserRouter,Route,Link,Switch} from 'react-router-dom'
 function App() {
   return (
     <div className="App">
+      {/* 左侧导航 */}
       <BrowserRouter>
        {/* <CollectionsPage/> */}
        {/* <Clock> */}
@@ -23,9 +24,11 @@ function App() {
             <li><Link to="/course">课程管理</Link></li>
             <li><Link to="/teacher">教师管理</Link></li>
             <li><Link to="/sc">选课管理</Link></li>
+            
           </ul>
         </div>
         <div className="content">
+           {/* 右侧内容 */}
           <Switch>
             <Route path="/student" component={Student}/>
             <Route path="/course" component={Course}/>
