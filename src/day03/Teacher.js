@@ -179,9 +179,17 @@ delTeacher(id){
           姓名 :
           <Input type="text" name="realname" value={form.realname} onChange={this.changeHandler}
             placeholder="请输入姓名"/> <br/>
-          性别 :
+          <label>性别 ：
+                  <select name="gender"  value={form.gender} onChange={this.changeHandler}>
+                       <option value=""></option>
+                       <option value="男">男</option>
+                       <option value="女">女</option>
+                       
+                  </select>
+          </label>
+          {/* 性别 :
           <Input type="text" name="gender" value={form.gender} onChange={this.changeHandler} 
-            placeholder="请输入性别" /><br/>
+            placeholder="请输入性别" /><br/> */}
           {/* <Radio value="男" name="gender" onChange={this.changeHandler}>男</Radio>
           <Radio value="女" name="gender" onChange={this.changeHandler}>女</Radio> */}
           

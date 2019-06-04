@@ -50,6 +50,8 @@ class Course extends React.Component {
       } else {alert (message)}
     })
   }
+
+
 //加载课程中老师信息
 loadCourseandTeacher(){
   $.get("http://localhost:8888/course/findAllWithTeacher",({status,message,data})=>{
@@ -69,6 +71,7 @@ loadCourseandTeacher(){
       })
       //点击确定刷新页面
       this.loadCourses();
+      this.loadCourseandTeacher();
     })
     event.preventDefault();
   }
@@ -96,6 +99,7 @@ loadCourseandTeacher(){
       }
     });
   };
+
   //把输入框中的内容绑定到表单上
   changeHandler = (event)=>{
     let name = event.target.name;
@@ -123,6 +127,7 @@ loadCourseandTeacher(){
         this.setState({
           visible: true,
            "form":data 
+           
       })
       } else {alert (message)}
     })
@@ -221,7 +226,8 @@ loadCourseandTeacher(){
           任课老师 :<br/>
           <select name="teacherId" value={form.teacherId} onChange={this.changeHandler}
             placeholder="请选择">
-            {
+              <option value="">--请选择--</option>
+            {               
                 teachers.map((item)=>{
                 return <option value={item.id} key={item.id} >{item.realname}</option>
               })

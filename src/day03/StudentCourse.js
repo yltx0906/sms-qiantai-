@@ -97,6 +97,9 @@ loadSCandCourse(){
         })
         //点击确定刷新页面
         this.loadStudentCourses();
+        this.loadSCandStudent();
+        this.loadSCandCourse();
+        
     })
     event.preventDefault();
   }
@@ -252,6 +255,7 @@ loadSCandCourse(){
          
           选课学生 :<br/>
           <select name="studentId" value={form.studentId} onChange={this.changeHandler}>
+              <option value="">--请选择--</option>
             {
                 students.map((item)=>{
                 return <option value={item.id} key={item.id} >{item.realname}</option>
@@ -260,6 +264,7 @@ loadSCandCourse(){
           </select><br/>
           选择课程 :<br/>
           <select name="courseId" value={form.courseId} onChange={this.changeHandler}>
+              <option value="">--请选择--</option>
             {
                 courses.map((item)=>{
                 return <option value={item.id} key={item.id} >{item.name}</option>

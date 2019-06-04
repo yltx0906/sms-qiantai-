@@ -8,6 +8,7 @@ class Student  extends React.Component {
     super();
     this.state = {
       students:[],
+      visible:false,
       form:{
         username:'',
         // password:'',
@@ -116,7 +117,6 @@ class Student  extends React.Component {
   }
 
   render(){
-    const { getFieldDecorator } = this.props.form;
     let { form } = this.state;
     let columns = [
       {
@@ -163,7 +163,7 @@ class Student  extends React.Component {
         {/* 通过table绑定数据 */}
         <Table  bordered={Collapse} rowKey = { record => record.id }
         dataSource= {this.state.students} 
-        columns= {columns} />;
+        columns= {columns} />
  
         <Modal
           title="添加一个学生"
@@ -176,7 +176,7 @@ class Student  extends React.Component {
         
         {JSON.stringify(form)}
         <Form layout="Horizontal">
-        <Form.Item label="用户名">
+        {/* <Form.Item label="用户名">
           {getFieldDecorator('username', {
             rules: [{ required: true, message: '用户名不能为空!' }],
           })(
@@ -190,10 +190,16 @@ class Student  extends React.Component {
           })(
           <Input type="text" name="realname" value={form.realname} onChange={this.changeHandler}
            placeholder="请输入姓名" />
-           )}</Form.Item>
+           )}</Form.Item> */}
+           用户名 :
+          <Input type="text" name="username" value={form.username} onChange={this.changeHandler}
+             placeholder="请输入用户名" /> <br/>
+          姓名 :
+          <Input type="text" name="realname" value={form.realname} onChange={this.changeHandler}
+            placeholder="请输入姓名"/> <br/>
           <label>性别 ：
                   <select name="gender"  value={form.gender} onChange={this.changeHandler}>
-                       <option value=""></option>
+                       <option value="">--请选择--</option>
                        <option value="男">男</option>
                        <option value="女">女</option>
                        
